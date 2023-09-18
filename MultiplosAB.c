@@ -6,10 +6,10 @@
 
         scanf("%d %d", &a, &b);
 
-        while ( a <= b) {
+        while (a <= b) {
             for (i = 1; i <= 10; i++) {
                 m = a * i;
-                print("%d \n", m);
+                print("%d\n", m);
             }
             a++;
         }
