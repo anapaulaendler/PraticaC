@@ -1,0 +1,72 @@
+
+
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    char nome [50];
+    float renda;
+    float idh;
+    int populacao
+} cidade;
+
+int main(){
+    
+    int qtd, maiorPop = 0, indiceMaiorPop = 0, compara, lixo;
+    float somaRenda = 0.0;
+    char cidadeBusca[50];
+    
+    printf("Digite a quantidade de cidades: ");
+    scanf("%d", &qtd);
+    
+    cidade city[qtd];
+    
+    for (int i = 0; i < qtd; i++){
+        printf("--- Cadastrando cidade %d---\n", i);
+        
+        //fflush(stdin);
+        
+        printf("Nome: ");
+        lixo = getchar();
+        scanf("%[^\n]s", city[i].nome);
+        
+        printf("Renda: ");
+        scanf("%f", &city[i].renda);
+        
+        printf("IDH: ");
+        scanf("%f", &city[i].idh);
+        
+        printf("Populção: ");
+        scanf("%d", &city[i].populacao);
+        
+        somaRenda = somaRenda + city[i].renda;   
+        
+        if (city[i].populacao > maiorPop){
+            maiorPop = city[i].populacao;
+            indiceMaiorPop = i;
+        }
+        
+    }
+    
+    printf("Renda média: %.2f\n", somaRenda / qtd);
+    printf("Maior população: %s\n", city[indiceMaiorPop].nome);
+    
+    printf("Cidade a ser buscada nos registros: ");
+    //fflush(stdin);
+    lixo = getchar();
+    scanf("%[^\n]s", cidadeBusca);
+    
+    for(int i = 0; i < qtd; i++){
+        compara = strcmp(city[i].nome, cidadeBusca);
+        
+        if (compara == 0){
+            printf("Nome: %s\n", city[i].nome);
+            printf("Renda per capita: %.2f\n", city[i].renda);
+            printf("IDH: %.1f\n", city[i].idh);
+            printf("População: %d\n", city[i].populacao);
+        }
+    }
+    
+    
+    return 0;
+}
